@@ -1,0 +1,31 @@
+{% extends "homepage/index.html" %}
+
+{% block title %}
+ Contact
+{% endblock %}
+
+{% block content %}
+
+   <p>Contact: </p>
+
+    {% if success %}
+
+        <p>Email: {{ email }}</p>
+        <p>Title: {{ title }}</p>
+        <p>Text: {{ text }}</p>
+
+    {% else %}
+    
+       <form action="." method="POST" accept-charset="utf-8">
+           {% csrf_token %}
+       
+             {{contact_form.as_p}} 
+       
+       <p><input type="submit" value="Send &rarr;"></p>
+       <p><input type="reset" value="Reset &rarr;"></p>
+
+       </form>
+
+    {% endif %}
+
+{% endblock %}
